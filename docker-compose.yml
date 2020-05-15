@@ -102,6 +102,7 @@ services:
     hostname: broker1
     environment:
         PULSAR_BROKER_CONF: /conf/broker.conf
+        # PULSAR_MEM:" -Xms512m -Xmx512m -XX:MaxDirectMemorySize=1g"
     ports:
       - "6660:6650"
       - "8090:8080"
@@ -156,7 +157,7 @@ services:
   dashboard:
     image: apachepulsar/pulsar-dashboard
     depends_on:
-      - standalone
+      - pulsar-proxy
     ports:
       - "80:80"
     environment:
