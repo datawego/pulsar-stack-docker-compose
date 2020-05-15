@@ -151,3 +151,13 @@ services:
     depends_on:
       - broker1
       - broker2
+
+
+  dashboard:
+    image: apachepulsar/pulsar-dashboard
+    depends_on:
+      - standalone
+    ports:
+      - "80:80"
+    environment:
+      - SERVICE_URL=http://pulsar-proxy:8080
